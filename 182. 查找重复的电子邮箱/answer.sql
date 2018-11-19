@@ -19,4 +19,12 @@
 -- 说明：所有电子邮箱都是小写字母。
 
 
+-- 使用 GROUP BY 和临时表
 select `Email` from (select `Email`,count(*) cnt from `Person` group by `Email`) s where cnt > 1;
+
+-- 使用 GROUP BY 和 HAVING 条件
+-- 向 GROUP BY 添加条件的一种更常用的方法是使用 HAVING 子句，该子句更为简单高效。
+select `Email`
+from `Person`
+group by `Email`
+having count(`Email`) > 1;
